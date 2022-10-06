@@ -1,5 +1,7 @@
 package com.bouris.spring5recipeapp.domain;
 
+import com.bouris.spring5recipeapp.repositories.RecipeRepository;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -17,6 +19,13 @@ public class Ingredient {
 
     @OneToOne(fetch = FetchType.EAGER)
     private UnitOfMeasure unitOfMeasure;
+
+    public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfMeasure, Recipe recipe) {
+        this.description = description;
+        this.amount = amount;
+        this.recipe = recipe;
+        this.unitOfMeasure = unitOfMeasure;
+    }
 
     public Long getId() {
         return id;
